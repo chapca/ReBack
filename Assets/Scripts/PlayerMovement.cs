@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerInputMap _inputs;
     CharacterController _charaCon;
     bool _isMoving;
-    Vector3 _wantedDirection;
+    public Vector3 WantedDirection;
     [SerializeField] float _speed;
     float _easeInValue;
     [SerializeField] float _easeInSpeed;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _charaCon = GetComponent<CharacterController>();
         _isMoving = false;
-        _wantedDirection = Vector3.zero;
+        WantedDirection = Vector3.zero;
         _easeInValue = 0;
         _rb = GetComponent<Rigidbody>();
     }
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     private void StopReadingMovementInputs(InputAction.CallbackContext obj)
     {
         _isMoving = false;
-        _wantedDirection = Vector3.zero;
+        WantedDirection = Vector3.zero;
     }
 
     private void EaseInMovement()
@@ -63,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        _wantedDirection = new Vector3(_inputs.Movement.Move.ReadValue<Vector2>().x, 0 , _inputs.Movement.Move.ReadValue<Vector2>().y);
-        _charaCon.Move(_wantedDirection * _speed * _easeInValue * Time.deltaTime);
+        WantedDirection = new Vector3(_inputs.Movement.Move.ReadValue<Vector2>().x, 0 , _inputs.Movement.Move.ReadValue<Vector2>().y);
+        _charaCon.Move(WantedDirection * _speed * _easeInValue * Time.deltaTime);
 
-        _playerBody.transform.forward = Vector3.Lerp(_playerBody.transform.forward, _wantedDirection, 22 * Time.deltaTime);
+        _playerBody.transform.forward = Vector3.Lerp(_playerBody.transform.forward, WantedDirection, 22 * Time.deltaTime);
     }
 
     #region disable inputs on Player disable to avoid weird inputs

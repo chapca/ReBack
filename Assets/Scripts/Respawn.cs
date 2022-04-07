@@ -27,7 +27,7 @@ public class Respawn : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        transform.position = _spawnPoint.position;
+        GameManager.instance.SetTimer(0.1f);
     }
 
     #region disable inputs on Player disable to avoid weird inputs

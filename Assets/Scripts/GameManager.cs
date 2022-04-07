@@ -62,4 +62,9 @@ public class GameManager : MonoBehaviour
     {
         return hasRespawed;
     }
+
+    public void SetTimer(float val)
+    {
+        timer = val;
+    }
 }

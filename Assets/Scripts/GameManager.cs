@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
         if (timer <= 0)
         {
             timer = maxTimer;
-            hasRespawed = true;
             Respawn();
         }
     }
@@ -50,7 +49,7 @@ public class GameManager : MonoBehaviour
     void Respawn()
     {
         player.transform.position = transform.position;
-        hasRespawed = false;
+        hasRespawed = true;
     }
 
     public void Win()
@@ -61,6 +60,10 @@ public class GameManager : MonoBehaviour
     public bool GetHasRespawned()
     {
         return hasRespawed;
+    }
+    public void SetHasRespawned(bool value)
+    {
+        hasRespawed = value;
     }
 
     public void SetTimer(float val)

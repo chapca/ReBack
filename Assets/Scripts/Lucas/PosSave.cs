@@ -7,35 +7,62 @@ public class PosSave : MonoBehaviour
 
     [Header("PosSytstem")]
     [SerializeField] GameObject player;
-    [SerializeField] Queue<Vector3> posForGhost1 = new Queue<Vector3>();
-    [SerializeField] Queue<Vector3> posForGhost2 = new Queue<Vector3>();  
+    [SerializeField] List<Vector3> posForGhost1 = new List<Vector3>();
+    [SerializeField] List<Vector3> posForGhost2 = new List<Vector3>();
+    [SerializeField] List<Vector3> posRecord = new List<Vector3>();
 
     [Header("Index(s)")]
-    [SerializeField] bool isGhost1;
+    [SerializeField] bool isGhost1 = true;
     void Start()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
-        
+        SavePos();
     }
 
     public void SavePos()
     {
-        if(isGhost1)
+        if (isGhost1)
         {
-            posForGhost1.Enqueue(player.transform.position);
+            posRecord.Add(player.transform.position);
+            if (GameManager.instance.GetHasRespawned())
+            {
+                CoppyPos();
+                isGhost1 = false;
+                GameManager.instance.SetHasRespawned(false);
+            }
         }
         else
         {
-            posForGhost2.Enqueue(player.transform.position);
+            posRecord.Add(player.transform.position);
+            if (GameManager.instance.GetHasRespawned())
+            {
+                CoppyPos();
+                isGhost1 = true;
+                GameManager.instance.SetHasRespawned(false);
+            }
         }
     }
 
     public virtual void Move()
     {
 
+    }
+
+    public void CoppyPos()
+    {
+        if (isGhost1)
+        {
+            posForGhost1 = new List<Vector3>(posRecord);
+            posRecord.Clear();
+        }
+        else
+        {
+            posForGhost2 = new List<Vector3>(posRecord);
+            posRecord.Clear();
+        }
     }
 }

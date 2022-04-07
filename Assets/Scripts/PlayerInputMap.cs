@@ -33,6 +33,14 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""de42ca8f-ae23-49cc-851c-19fe66dc6b8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -211,6 +219,39 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b295be95-a298-4ada-a149-0a75b0e23194"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62e89d27-bc7e-4ed9-81c9-0f0e67dd60c9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfb8eaee-4d83-42e2-b180-6954e4bca03c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +268,7 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        m_Movement_Respawn = m_Movement.FindAction("Respawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -278,12 +320,14 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Jump;
+    private readonly InputAction m_Movement_Respawn;
     public struct MovementActions
     {
         private @PlayerInputMap m_Wrapper;
         public MovementActions(@PlayerInputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
+        public InputAction @Respawn => m_Wrapper.m_Movement_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +343,9 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
+                @Respawn.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnRespawn;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -309,6 +356,9 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
             }
         }
     }
@@ -326,5 +376,6 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
 }

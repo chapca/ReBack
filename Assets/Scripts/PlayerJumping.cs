@@ -6,22 +6,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerJumping : MonoBehaviour
 {
+    [SerializeField] private float coyoteTime = 0.2f;
     PlayerInputMap _inputs;
-    [SerializeField] bool _isGrounded;
-    [SerializeField] bool _hasLanded;
-    [SerializeField] bool _isJumping;
+    bool _isGrounded;
+    bool _hasLanded;
+    bool _isJumping;
 
-    [SerializeField] float _verticalMomemtum;
+    float _verticalMomemtum;
     [SerializeField] float _gravityStrength;
 
-    [SerializeField] float _jumpT = 0f;
-    [SerializeField] float _jumpLerp = 0f;
-    [SerializeField] float _oldJumpT = 0f;
+    float _jumpT = 0f;
+    float _jumpLerp = 0f;
+    float _oldJumpT = 0f;
     [SerializeField] float jumpHeight = 1f;
     [SerializeField] float jumpDuration = 1f;
     [SerializeField] AnimationCurve _jumpCurve = null;
-    [SerializeField] bool _canJump;
-    [SerializeField] bool _hasCoyoted;
+    bool _canJump;
+    bool _hasCoyoted;
 
     CharacterController _charaCon;
     private bool _shouldApplyGravity;
@@ -62,7 +63,7 @@ public class PlayerJumping : MonoBehaviour
         _hasLanded = false;
         _isGrounded = false;
 
-        if (!_hasCoyoted) Invoke("Coyote", 0.3f);
+        if (!_hasCoyoted) Invoke("Coyote", coyoteTime);
         _hasCoyoted = true;
 
         _verticalMomemtum -= Time.deltaTime * _gravityStrength;

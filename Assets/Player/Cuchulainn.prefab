@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 388534879}
   - component: {fileID: 388534878}
   - component: {fileID: 661742414}
+  - component: {fileID: 7935326647718059396}
   m_Layer: 0
   m_Name: Cuchulainn
   m_TagString: Untagged
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0f4cf9c3da475419705cc2d13d456f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WantedDirection: {x: 0, y: 0, z: 0}
   _speed: 7.57
   _easeInSpeed: 15
   _playerBody: {fileID: 1336719606}
@@ -177,4 +179,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546ad062ea0b5174ea73a73821156c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
+  coyoteTime: 0.2
+  _gravityStrength: 0
+  jumpHeight: 1
+  jumpDuration: 1
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7935326647718059396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996396039397119898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258b32d69ef620d4fabf9e9df2e8c1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  isGhost1: 0

@@ -21,7 +21,7 @@ public class PlayerJumping : MonoBehaviour
     [SerializeField] float jumpHeight = 1f;
     [SerializeField] float jumpDuration = 1f;
     [SerializeField] AnimationCurve _jumpCurve = null;
-    bool _canJump;
+    public bool _canJump {get; private set;}
     bool _hasCoyoted;
 
     CharacterController _charaCon;

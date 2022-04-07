@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 661742414}
   - component: {fileID: 7935326647718059396}
   - component: {fileID: 1873078996}
-  - component: {fileID: 8755995091342281871}
+  - component: {fileID: 716338539}
   m_Layer: 0
   m_Name: Cuchulainn
   m_TagString: Untagged
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coyoteTime: 0.2
-  _gravityStrength: 0.77
-  jumpHeight: 2
+  _gravityStrength: 0.7
+  jumpHeight: 4
   jumpDuration: 0.3
   _jumpCurve:
     serializedVersion: 2
@@ -191,27 +191,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.015830964
-      outSlope: 0.015830964
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.88904715
-    - serializedVersion: 3
-      time: 0.1675722
-      value: 0.15416995
-      inSlope: 2.1861863
-      outSlope: 2.1861863
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.17091514
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -245,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 0}
---- !u!114 &8755995091342281871
+--- !u!114 &716338539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,7 +245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 996396039397119898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d43bcd934c1484882a7b0dec982b5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 934f34be7bb3035479dc8f39ed0a9119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
+  maxTimer: 0.2

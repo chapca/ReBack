@@ -7,14 +7,17 @@ public class PlayerInputBuffer : MonoBehaviour
 {
     PlayerInputMap _inputs;
     PlayerJumping jumping;
+    bool check;
 
-    bool hasPressed;
     float timer;
     [SerializeField] float maxTimer;
 
     private void Awake()
     {
-        _inputs.Movement.Jump.started += JumpBuffer;
+        _inputs = new PlayerInputMap();
+        _inputs.Movement.Jump.started += StartJumpBuffer;
+
+        jumping = GetComponent<PlayerJumping>();
     }
 
     void Start()
@@ -22,8 +25,41 @@ public class PlayerInputBuffer : MonoBehaviour
         timer = maxTimer;
     }
 
-    void JumpBuffer(InputAction.CallbackContext ctx)
+    void StartJumpBuffer(InputAction.CallbackContext ctx)
     {
-
+        StopCoroutine("JumpBuffer");
+        StartCoroutine("JumpBuffer", ctx);
     }
+
+    IEnumerator JumpBuffer(InputAction.CallbackContext ctx)
+    {
+        if (jumping._canJump == false)
+        {
+            check = true;
+
+            yield return new WaitForSeconds(maxTimer);
+
+            if (check == jumping._canJump)
+            {
+                jumping.Jump(ctx);
+            }
+            else
+            {
+                check = false;
+            }
+        }
+        yield return null;
+    }
+
+    #region disable inputs on Player disable to avoid weird inputs
+    private void OnEnable()
+    {
+        _inputs.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _inputs.Disable();
+    }
+    #endregion
 }

@@ -102,7 +102,7 @@ public class PlayerJumping : MonoBehaviour
         }
     }
 
-    void Jump(InputAction.CallbackContext obj)
+    public void Jump(InputAction.CallbackContext obj)
     {
         if (_canJump)
         {

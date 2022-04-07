@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winDow;
     [SerializeField] GameObject player;
 
+    [SerializeField] bool hasRespawed;
+
     public static GameManager instance;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (timer <= 0)
         {
             timer = maxTimer;
+            hasRespawed = true;
             Respawn();
         }
     }
@@ -47,10 +50,16 @@ public class GameManager : MonoBehaviour
     void Respawn()
     {
         player.transform.position = transform.position;
+        hasRespawed = false;
     }
 
     public void Win()
     {
         winDow.SetActive(true);
+    }
+
+    public bool GetHasRespawned()
+    {
+        return hasRespawed;
     }
 }

@@ -130,6 +130,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].time
+      value: 0.52375513
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[2].time
+      value: 0.9992676
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].value
+      value: 1.0021386
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[2].value
+      value: -0.0054512024
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[0].inSlope
+      value: 1.0186963
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].inSlope
+      value: 0.06364643
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[2].inSlope
+      value: -0.061888047
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[0].outSlope
+      value: 1.0186963
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].outSlope
+      value: 0.06364643
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[2].inWeight
+      value: 0.10290915
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[2].outSlope
+      value: -0.061888047
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[0].outWeight
+      value: 0.054146208
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 661742414, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
+      propertyPath: _jumpCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 996396039397119898, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
       propertyPath: m_Name
       value: Cuchulainn
@@ -144,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582359522104931988, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.1
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 5582359522104931988, guid: df160ea61cbe5f0448c39fca7144f6b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -382,12 +450,12 @@ GameObject:
   - component: {fileID: 1091726463}
   - component: {fileID: 1091726462}
   - component: {fileID: 1091726461}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1091726461
 BoxCollider:

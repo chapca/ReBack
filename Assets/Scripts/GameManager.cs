@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour
         if (!isWin)
         {
             timer -= Time.deltaTime;
-            timeLeft.text = timer.ToString("0.00");
+            UIManager.Instance.TimeBar.fillAmount = Mathf.Lerp(0,1,Mathf.InverseLerp(0, maxTimer, timer));
+            if(timeLeft)timeLeft.text = timer.ToString("0.00");
         }
 
         if (timer <= 0)
         {
             timer = maxTimer;
             StartCoroutine("Respawn");
-            hasRespawed = true;
         }
     }
 
@@ -62,20 +62,13 @@ public class GameManager : MonoBehaviour
         player.transform.position = transform.position;
         yield return new WaitForSeconds(0.1f);
         player.GetComponent<PlayerMovement>().CanMove = true;
-        hasRespawed = false;
+        hasRespawed = true;
         yield return null;
     }
 
     public void Win()
     {
-        isWin = true;
         winDow.SetActive(true);
-        Invoke("Crash", 2f);
-    }
-
-    void Crash()
-    {
-        Application.Quit();
     }
 
     public bool GetHasRespawned()

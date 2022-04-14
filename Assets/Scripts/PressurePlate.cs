@@ -6,12 +6,13 @@ public class PressurePlate : MonoBehaviour
 {
     Animator animator;
     public bool isActive;
+    [SerializeField] string managerName;
     PlateManager manager;
 
     private void Start()
     {
         animator = GetComponentInParent<Animator>();
-        manager = GameObject.Find("PlateManager").GetComponent<PlateManager>();
+        manager = GameObject.Find(managerName).GetComponent<PlateManager>();
     }
 
     private void OnTriggerEnter(Collider other)

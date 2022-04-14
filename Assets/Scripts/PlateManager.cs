@@ -5,8 +5,13 @@ using UnityEngine;
 public class PlateManager : MonoBehaviour
 {
     [SerializeField] List<PressurePlate> plates = new List<PressurePlate>();
-    int boolToWin;
+
     [SerializeField] GameObject removeObject;
+    [SerializeField] GameObject replaceObject;
+
+    [SerializeField] bool replace;
+
+    int boolToWin;
 
     public void Check()
     {
@@ -23,7 +28,15 @@ public class PlateManager : MonoBehaviour
         }
         if (boolToWin == plates.Count)
         {
-            removeObject.SetActive(false);
+            if (!replace)
+            {
+                removeObject.SetActive(false);
+            }
+            else
+            {
+                removeObject.SetActive(false);
+                replaceObject.SetActive(true);
+            }
         }
     }
 }

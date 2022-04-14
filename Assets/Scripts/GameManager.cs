@@ -50,14 +50,19 @@ public class GameManager : MonoBehaviour
         if (timer <= 0)
         {
             timer = maxTimer;
-            Respawn();
+            StartCoroutine("Respawn");
         }
     }
 
-    void Respawn()
+    public IEnumerator Respawn()
     {
+        player.GetComponent<PlayerMovement>().CanMove = false;
+        yield return new WaitForSeconds(0.1f);
         player.transform.position = transform.position;
+        yield return new WaitForSeconds(0.1f);
+        player.GetComponent<PlayerMovement>().CanMove = true;
         hasRespawed = true;
+        yield return null;
     }
 
     public void Win()

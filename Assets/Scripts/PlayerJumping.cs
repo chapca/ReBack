@@ -17,21 +17,25 @@ public class PlayerJumping : MonoBehaviour
 
     float _jumpT = 0f;
     float _jumpLerp = 0f;
+    float _jumpLerpMax = 0f;
     float _oldJumpT = 0f;
     [SerializeField] float jumpHeight = 1f;
     [SerializeField] float jumpDuration = 1f;
     [SerializeField] AnimationCurve _jumpCurve = null;
-    public bool _canJump {get; private set;}
+    public bool _canJump = true;
     bool _hasCoyoted;
 
     CharacterController _charaCon;
+    PlayerMovement _playerMovement;
     private bool _shouldApplyGravity;
+    public bool _isHoldingJump { get; private set; }
 
     private void Awake()
     {
+        _playerMovement = GetComponent<PlayerMovement>();
         _inputs = new PlayerInputMap();
-        _inputs.Movement.Jump.started += Jump;
-        _inputs.Movement.Jump.canceled += StopJumping;
+        _inputs.Movement.Jump.started += PressJump;
+        _inputs.Movement.Jump.canceled += ReleaseJump;
     }
 
     void Start()
@@ -42,7 +46,7 @@ public class PlayerJumping : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(_shouldApplyGravity) ApplyGravity();
+        if (_shouldApplyGravity && _playerMovement.CanMove) ApplyGravity();
         CheckGround();
         if (_isJumping) ApplyJump();
     }
@@ -102,7 +106,19 @@ public class PlayerJumping : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext obj)
+    private void PressJump(InputAction.CallbackContext obj)
+    {
+        _jumpLerpMax = 1;
+        Jump();
+    }
+
+    private void ReleaseJump(InputAction.CallbackContext obj)
+    {
+        _jumpLerpMax = 0.2f;
+        StopJumping();
+    }
+
+    public void Jump()
     {
         if (_canJump)
         {
@@ -124,7 +140,7 @@ public class PlayerJumping : MonoBehaviour
         _charaCon.Move(new Vector3(0f, mario * jumpHeight, 0f));
         _oldJumpT = _jumpT;
 
-        if (_jumpLerp >= 1f)
+        if (_jumpLerp >= _jumpLerpMax)
         {
             _isJumping = false;
             _verticalMomemtum = 0f;
@@ -133,8 +149,9 @@ public class PlayerJumping : MonoBehaviour
         }
     }
 
-    void StopJumping(InputAction.CallbackContext obj)
+    void StopJumping()
     {
+        _jumpLerpMax = 0.2f;
         if (_isJumping)
         {
             _isJumping = false;

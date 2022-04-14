@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _speed;
     float _easeInValue;
     [SerializeField] float _easeInSpeed;
+
+    public bool CanMove { get; internal set; }
+
     Rigidbody _rb;
     [SerializeField] GameObject _playerBody;
 
@@ -31,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isMoving)
+        if (_isMoving && CanMove)
         {
             EaseInMovement();
             Move();
@@ -63,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
+
         WantedDirection = new Vector3(_inputs.Movement.Move.ReadValue<Vector2>().x, 0 , _inputs.Movement.Move.ReadValue<Vector2>().y);
         _charaCon.Move(WantedDirection * _speed * _easeInValue * Time.deltaTime);
 

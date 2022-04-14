@@ -234,7 +234,7 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""62e89d27-bc7e-4ed9-81c9-0f0e67dd60c9"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<XInputController>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -245,7 +245,7 @@ public class @PlayerInputMap : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""dfb8eaee-4d83-42e2-b180-6954e4bca03c"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

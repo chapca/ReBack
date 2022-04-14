@@ -28,10 +28,10 @@ public class PlayerInputBuffer : MonoBehaviour
     void StartJumpBuffer(InputAction.CallbackContext ctx)
     {
         StopCoroutine("JumpBuffer");
-        StartCoroutine("JumpBuffer", ctx);
+        StartCoroutine("JumpBuffer");
     }
 
-    IEnumerator JumpBuffer(InputAction.CallbackContext ctx)
+    IEnumerator JumpBuffer()
     {
         if (jumping._canJump == false)
         {
@@ -41,7 +41,7 @@ public class PlayerInputBuffer : MonoBehaviour
 
             if (check == jumping._canJump)
             {
-                jumping.Jump(ctx);
+                jumping.Jump();
             }
             else
             {

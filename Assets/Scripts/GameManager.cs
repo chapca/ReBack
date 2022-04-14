@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             timer = maxTimer;
             StartCoroutine("Respawn");
+            hasRespawed = true;
         }
     }
 
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = transform.position;
         yield return new WaitForSeconds(0.1f);
         player.GetComponent<PlayerMovement>().CanMove = true;
-        hasRespawed = true;
+        hasRespawed = false;
         yield return null;
     }
 

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float _easeInValue;
     [SerializeField] float _easeInSpeed;
 
-    public bool CanMove { get; internal set; }
+    public bool CanMove { get; internal set; } = true;
 
     Rigidbody _rb;
     [SerializeField] GameObject _playerBody;

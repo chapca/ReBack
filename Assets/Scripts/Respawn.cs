@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class Respawn : MonoBehaviour
 {
     PlayerInputMap _inputs;
-    [SerializeField] Transform _spawnPoint;
 
     private void Awake()
     {
@@ -22,6 +21,7 @@ public class Respawn : MonoBehaviour
 
     void PressRespawn(InputAction.CallbackContext ctx)
     {
+        Debug.Log("helo");
         RespawnPlayer();
     }
 

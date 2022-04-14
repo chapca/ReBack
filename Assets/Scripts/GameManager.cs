@@ -62,7 +62,14 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        isWin = true;
         winDow.SetActive(true);
+        Invoke("Crash", 2f);
+    }
+
+    void Crash()
+    {
+        Application.Quit();
     }
 
     public bool GetHasRespawned()

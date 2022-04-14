@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -11,7 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winDow;
     [SerializeField] GameObject player;
 
+    [SerializeField] TextMeshProUGUI timeLeft;
+
     [SerializeField] bool hasRespawed;
+    bool isWin;
 
     public static GameManager instance;
 
@@ -37,7 +41,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        if (!isWin)
+        {
+            timer -= Time.deltaTime;
+            timeLeft.text = timer.ToString("0.00");
+        }
 
         if (timer <= 0)
         {
